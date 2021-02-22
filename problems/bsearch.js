@@ -18,19 +18,27 @@ targetNum is within the nums array.
 const recurBSearch = (nums, targetNum) => {
   // Base Case: if nums has no length, return false because we've run out of 
   // items to search and haven't found targetNum
-
+  if(nums.length ===0) return false
   // determine the slice point (ie the 'middle' of the array).
-
+  const middle = Math.floor(nums.length/2)
   // create "left half" and "right half" arrays, not including the slice point.
-
+  let leftHalf = nums.slice(0,middle)
+  let rightHalf = nums.slice(middle+1)
   // if targetNum is less than the value in the array at slice point,
   // return this search on the left half
-
+  if(targetNum < nums[middle]){
+    return recurBSearch(leftHalf,targetNum)
+  }
   // if targetNum is greater than the value in the array at slice point,
   //return this search on the right half
-
+  else if(targetNum > nums[middle]){
+    return recurBSearch(rightHalf,targetNum)
+  }
   // if it's not greater than or less than (i.e. 'else'),
   // we know it's equal so return true
+  else{
+    return true
+  }
 }
 
 
@@ -44,7 +52,7 @@ targetNum is within the nums array.
 const iterBSearch = (nums, targetNum) => {
   // Save references to indices at the beginning, middle, and end of the array
   // into variables: lowerIdx, midIdx, and upperIdx
-
+  
   // while the lowerIdx is less than or equal to the upperIdx, there are still
   // values to be searched
 
