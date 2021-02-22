@@ -141,8 +141,8 @@ Write a Recursive Binary Search that returns the Index value of targetNum if it
 is in the nums array, and -1 if it is not found.
 *******************************************************************/
 
-const recurBSearchIdxV2 = (nums, targetNum, low = null, hi = null) => {
-  /*sdhfkjsdhfjksdfh
+const recurBSearchIdxV2 = (nums, targetNum, low = 0, hi = nums.length - 1) => {
+  /*
   This implementation is recursive, but borrows the low/hi logic from Version 2
   to establish a different base case. Rather than shrinking the array until its
   length is 0, this implementation moves low and hi indices to determine
@@ -166,6 +166,17 @@ const recurBSearchIdxV2 = (nums, targetNum, low = null, hi = null) => {
   If it's not greater and not less (i.e. 'else'), return the slice point because
   we have found our value!
   */
+  if(low === hi && nums[low] !== targetNum) return -1;
+
+  let slicePoint = Math.floor((low + hi) / 2)
+  if(targetNum < nums[slicePoint]){
+    return recurBSearchIdxV2(nums, targetNum, low, slicePoint);
+  }  else if(targetNum > nums[slicePoint]){
+    return recurBSearchIdxV2(nums, targetNum, slicePoint + 1, hi);
+  } else {
+    return slicePoint;
+  }
+
 }
 
 
