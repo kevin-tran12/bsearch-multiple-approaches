@@ -66,7 +66,7 @@ const iterBSearch = (nums, targetNum) => {
     // not between the current lower and current middle, so reassign the lowerIdx
     // to the middle (ie cut off the left half of the array)
     if (targetNum > nums[midIdx]) {
-      lowerIndex = midIdx + 1;[]
+      lowerIndex = midIdx + 1;
     }
     // if targetNum is less than the value in the middle, we know targetNum is not
     // between the current upper and current middle, so reassign the upperIdx
@@ -190,6 +190,18 @@ it is in the nums array, and -1 if it is not found.
 const iterBSearchIdx = (nums, targetNum) => {
   // this is identical to Version 2, but return the index or -1 rather than
   // true or false
+  let lowerIndex = 0;
+  let upperIdx = nums.length - 1;
+  let midIdx;
+  while (lowerIndex <= upperIdx) {
+    midIdx = Math.floor((lowerIndex + upperIdx) / 2);
+    if (targetNum > nums[midIdx]) {
+      lowerIndex = midIdx + 1;
+    } else if (targetNum < nums[midIdx]) {
+      upperIdx = midIdx - 1;
+    } else if (targetNum === nums[midIdx]) return midIdx
+  }
+  return -1
 }
 
 module.exports = {
