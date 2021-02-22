@@ -142,7 +142,7 @@ is in the nums array, and -1 if it is not found.
 *******************************************************************/
 
 const recurBSearchIdxV2 = (nums, targetNum, low = null, hi = null) => {
-  /*
+  /*sdhfkjsdhfjksdfh
   This implementation is recursive, but borrows the low/hi logic from Version 2
   to establish a different base case. Rather than shrinking the array until its
   length is 0, this implementation moves low and hi indices to determine
